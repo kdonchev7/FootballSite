@@ -1,0 +1,38 @@
+<div class="login-form">
+    <form #form="ngForm" (ngSubmit)="loginHandler(form)">
+        <h1>Login</h1>
+        <div class="content">
+
+            <div class="input-field">
+                <input type="text" #usernameInput="ngModel" ngModel minlength="4" required name="username" id="username" placeholder="username">
+                <ng-container *ngIf="usernameInput.touched">
+                    <p class="error" *ngIf="usernameInput.errors?.['required']">
+                        Username is required!
+                    </p>
+                    <p class="error" *ngIf="usernameInput.errors?.['minlength']">
+                        Username has to be at least 4 characters!
+                    </p>
+                    <!-- {{usernameInput.errors | json}} -->
+                </ng-container>
+            </div>
+
+            <div class="input-field">
+                <input type="password" #passwordInput="ngModel" ngModel minlength="5" required placeholder="Password" name="password"
+                    id="password">
+                <ng-container *ngIf="passwordInput.touched">
+                    <p class="error" *ngIf="passwordInput.errors?.['required']">
+                        Password is required!
+                    </p>
+                    <p class="error" *ngIf="passwordInput.errors?.['minlength']">
+                        Password must be at least 5 characters!
+                    </p>
+                </ng-container>
+            </div>
+
+            <p>You don't have an account yet? <a routerLink="/auth/register" class="link">Register here</a></p>
+        </div>
+        <div class="action">
+            <button>Sign in</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,9 @@
+1. Obtain data from database
+<!-- 2. Do the background -->
+<!-- 3. SCSS of Home page -->
+<!-- 4. Redo CSS of all games -->
+<!-- 5. Footer CSS -->
+6. Functionality of details page - peopleNeeded to decrease when you join
+7. Add authenticate
+8. Add guards
+9. Add interceptor

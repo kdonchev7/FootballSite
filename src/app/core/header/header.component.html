@@ -1,0 +1,78 @@
+<!-- <header>
+    <div class="mini-navbar-wrap">
+        <div class="logo-wrap">
+            <p class="logo"><span class="logo">SoftUni Forum</span></p>
+        </div>
+        <div class="mini-navbar">
+            <nav *ngIf="!isLoggedIn">
+                <ul>
+                    <li>
+                        <a routerLink="/">Home</a>
+                    </li>
+                    <li>
+                        <a routerLink="/contacts">Contacts</a>
+                    </li>
+                    <li>
+                        <a routerLink="/all-games">All games</a>
+                    </li>
+                    <li>
+                        <a routerLink="/auth/login">Login</a>
+                    </li>
+                    <li>
+                        <a routerLink="/auth/register">Register</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <nav *ngIf="isLoggedIn">
+                <ul>
+                    <li>
+                        <a routerLink="/">Home</a>
+                    </li>
+                    <li>
+                        <a routerLink="/contacts">Contacts</a>
+                    </li>
+                    <li>
+                        <a routerLink="/all-games">All games</a>
+                    </li>
+                    <li>
+                        <a routerLink="/create">Create new match</a>
+                    </li>
+                    <li>
+                        <a routerLink="/auth/logout">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</header> -->
+<div class="header">
+    <nav>
+        <img src="ball.ico">
+        <a routerLink="/">Home</a>
+        <ul>
+            <li>
+                <a routerLink="/all-games">All games</a>
+            </li>
+            
+            <ng-container *ngIf="isLoggedIn">
+                <li>
+                    <a routerLink="/create">Create new match</a>
+                </li>
+                <li>
+                    <a routerLink="/auth/logout">Logout</a>
+                </li>
+            </ng-container>
+            <!--Only guest-->
+            <ng-container *ngIf="!isLoggedIn">
+                <li>
+                    <a routerLink="/auth/login">Sign in</a>
+                </li>
+                <li>
+                    <a routerLink="/auth/register">Register</a>
+                </li>
+            </ng-container>
+        </ul>
+    </nav>
+</div>

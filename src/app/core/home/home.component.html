@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>Welcome to FindAGame!</h1>
+    <div class="info">
+        <h2>About Us</h2>
+        <p>This is the right place for you if you are looking for a football game to participate in!</p>
+        <p>Our goal is to make finding a place to practice the sport an easy task, that will make it an enjoyable
+            process.</p>
+    </div>
+    <div class="links">
+        <ng-container *ngIf="isLoggedIn">
+            <p>
+                You can start your searching from here <a routerLink="/all-games">All games</a>,
+                or you can <a routerLink="/create">Create your own match!</a>
+            </p>
+        </ng-container>
+        <ng-container *ngIf="!isLoggedIn">
+            <p>First, you will need a profile in order to enroll for matches. <a routerLink="/auth/register">Register
+                    here for free!</a></p>
+            <p>If you already have an account, <a routerLink="/auth/login">Sign in</a>.</p>
+        </ng-container>
+        <ng-container *ngFor="let item of apiService.data">
+            <h3>{{item.message3}}</h3>
+        </ng-container>
+    </div>
+</div>

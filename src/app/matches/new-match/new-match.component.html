@@ -1,0 +1,86 @@
+<form #form="ngForm" class="decor" (ngSubmit)="createGameHandler(form)">
+    <div class="form-left-decoration"></div>
+    <div class="form-right-decoration"></div>
+    <div class="circle"></div>
+    <div class="form-inner">
+        <h1>Create a game</h1>
+        <div>
+            <input type="text" #titleInput="ngModel" ngModel required maxlength="15" name="title" id="title"
+                placeholder="Title (max 15 characters)">
+            <ng-container *ngIf="titleInput.touched">
+                <p class="error" *ngIf="titleInput?.errors?.['required']">
+                    Title is required!
+                </p>
+                <p class="error" *ngIf="titleInput?.errors?.['maxlength']">
+                    Title cannot be more than 15 characters!
+                </p>
+            </ng-container>
+        </div>
+
+        <div>
+            <textarea rows="5" #descriptionInput="ngModel" ngModel required maxlength="50" name="description"
+                id="description" placeholder="Description (up to 50 characters)"></textarea>
+            <ng-container *ngIf="descriptionInput.touched">
+                <p class="error" *ngIf="descriptionInput?.errors?.['required']">
+                    Description is required!
+                </p>
+                <p class="error" *ngIf="descriptionInput?.errors?.['maxlength']">
+                    Description cannot be more than 50 characters!
+                </p>
+            </ng-container>
+        </div>
+
+        <div>
+            <input type="text" #placeInput="ngModel" ngModel required name="place" id="place"
+                placeholder="Place of the game">
+            <ng-container *ngIf="placeInput.touched">
+                <p class="error" *ngIf="placeInput?.errors?.['required']">
+                    Place of the match is required!
+                </p>
+            </ng-container>
+        </div>
+
+        <div>
+            <input type="date" #dateInput="ngModel" ngModel required name="date" id="date"
+                placeholder="Date and time of match">
+            <ng-container *ngIf="dateInput.touched">
+                <p class="error" *ngIf="dateInput?.errors?.['required']">
+                    You have to tell us when you want to play!
+                </p>
+            </ng-container>
+        </div>
+
+        <div>
+            <input type="number" #peopleNeededInput="ngModel" ngModel max="21" required name="peopleNeeded"
+                id="peopleNeeded" placeholder="Number of people needed">
+            <ng-container *ngIf="peopleNeededInput.touched">
+                <p class="error" *ngIf="peopleNeededInput?.errors?.['required']">
+                    How many new friends are needed?
+                </p>
+                <p class="error" *ngIf="peopleNeededInput?.errors?.['max']">
+                    Number must be less than 21!
+                </p>
+            </ng-container>
+        </div>
+
+        <div>
+            <input type="text" #imgUrlInput="ngModel" ngModel required name="imgUrl" id="imgUrl"
+                placeholder="Image URL">
+            <ng-container *ngIf="imgUrlInput.touched">
+                <p class="error" *ngIf="imgUrlInput?.errors?.['required']">
+                    Put an image to capture the attention of people!
+                </p>
+            </ng-container>
+        </div>
+        <button>Create</button>
+    </div>
+</form>
+
+
+<!-- title: string;
+userId: IUser;
+description: string;
+createdAt: string;
+place: string;
+peopleNeeded: number;
+date: string; -->

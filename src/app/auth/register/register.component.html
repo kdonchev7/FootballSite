@@ -1,0 +1,72 @@
+<div class="register-form">
+    <form [formGroup]="form" (ngSubmit)="registerHandler()">
+        <h1>Register</h1>
+        <div class="content">
+
+            <div class="input-field">
+                <input type="text" formControlName="username" id="username" placeholder="username">
+                <ng-container *ngIf="form.get('username')?.touched">
+                    <p class="error" *ngIf="form.get('username')?.errors?.['required']">
+                        Username is required!
+                    </p>
+                    <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">
+                        Username has to be at least 4 characters!
+                    </p>
+                </ng-container>
+            </div>
+
+            <div class="input-field">
+                <input type="text" formControlName="firstName" id="firstName" placeholder="first Name">
+                <ng-container *ngIf="form.get('firstName')?.touched">
+                    <p class="error" *ngIf="form.get('firstName')?.errors?.['required']">
+                        First name is required!
+                    </p>
+                </ng-container>
+            </div>
+
+            <div class="input-field">
+                <input type="text" formControlName="lastName" id="lastName" placeholder="last Name">
+                <ng-container *ngIf="form.get('lastName')?.touched">
+                    <p class="error" *ngIf="form.get('lastName')?.errors?.['required']">
+                        Last name is required!
+                    </p>
+                </ng-container>
+            </div>
+
+            <div class="input-field">
+                <input type="text" formControlName="tel" id="tel" placeholder="Phone number">
+                <ng-container *ngIf="form.get('tel')?.touched">
+                    <p class="error" *ngIf="form.get('tel')?.errors?.['required']">
+                        Phone number is required!
+                    </p>
+                </ng-container>
+            </div>
+
+            <ng-container formGroupName="pass">
+                <div class="input-field">
+                    <input type="password" formControlName="password" placeholder="Password" id="password">
+                    <ng-container *ngIf="form.get('pass')?.get('password')?.touched">
+                        <p class="error" *ngIf="form.get('pass')?.get('password')?.errors?.['required']">
+                            Password is required!
+                        </p>
+                        <p class="error" *ngIf="form.get('pass')?.get('password')?.errors?.['minlength']">
+                            Password must be at least 5 characters!
+                        </p>
+                    </ng-container>
+                </div>
+
+                <div class="input-field">
+                    <input type="password" formControlName="rePassword" id="rePassword" placeholder="Confirm password">
+                    <p *ngIf="form.get('pass')?.errors?.['sameValueGroupValidator'] && form.get('pass')?.get('rePassword')?.touched"
+                        class="error">Repeat password does not match password!
+                    </p>
+                </div>
+            </ng-container>
+
+            <p>Already have an account? <a routerLink="/auth/login" class="link">Sign in here</a></p>
+        </div>
+        <div class="action">
+            <button>Register</button>
+        </div>
+    </form>
+</div>
